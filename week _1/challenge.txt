@@ -1,0 +1,53 @@
+The only reference which can be used are javascript API docs. Reading about recursion is fine but don't go looking at other similar tree algorithms. Try to do the logic part yourself.
+
+Using javascript, write a function that accepts an html string and console.logs the id of every element containing an attribute called "hello" with a value "world" (hello="world"). The order of the printed ids does not matter.
+Do not use jQuery or any other external library. Also, no xml selectors including xpath. Also, no using any array looping methods like map, filter, forEach, indexOf...
+
+Do this problem in two different ways:
+
+1. Using while loops, for loops, or a combination of both
+2. Using only recursion (no loops)
+
+One more thing: One of these two solutions must not use nextElementSibling, nextSibling, previousElementSibling or previousSibling
+
+Extra credit: some other way of your choice. There are no rules other than it must come from your brain.
+
+
+Example HTML
+
+<HTML>
+<HEAD><TITLE>I Didn't Use AI</TITLE>
+<BODY>
+<DIV>
+	<P id="p1" hello="world">a paragraph <SPAN id="s1" hello="world">a spanerriffic spanny span</SPAN></P>
+</DIV>
+<H1 id="heading1" hello="world">A HEADING<H1>
+</BODY>
+</HTML>
+
+
+The output of this html would be:
+
+p1
+s1
+heading1
+
+Remember that order does not matter.
+
+
+Use your favorite coding tool. Personally, I will use one file and start with the following.
+
+<HTML>
+<HEAD><TITLE>Brain food</TITLE>
+<BODY>
+<script>
+const html = '<HTML><HEAD><TITLE>I Didn/'t Use AI</TITLE><BODY><div><p id="p1" hello="world">a paragraph <span id="s1" hello="world">some spanerific spanny span</span></p></div><h1 id="heading1" hello="world">A HEADING<h1></BODY></HTML>';
+
+function doTheThing(htmlString) {
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(htmlString, "text/html");
+}
+doTheThing(html);
+</script>
+</BODY>
+</HTML>

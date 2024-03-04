@@ -69,6 +69,7 @@ let player = {
 };
 
 let g = .01;
+// let g = .00001;
 let tv = 1;
 let jumping = false;
 
@@ -104,6 +105,46 @@ function gameLoop() {
 	//************ COLLISION CODE ***********
 		// This is your spot.
 		// feel free to call a function from here if you like but don't modify other code.
+
+
+		const xArrPlayerPos = Math.floor((player.x)/10)
+		const yArrPlayerPos = Math.floor((player.y + 10)/10)
+
+		checkCurrentFloor(yArrPlayerPos, xArrPlayerPos)
+
+		function checkCurrentFloor(ypos, xpos) {
+			if(isFloor(ypos, xpos) && !jumping) {
+				next.y = player.y
+				next.v.y = 0
+				next.acceleration.y = 0
+				g = 0
+			}
+
+			if(jumping){
+				next.y = player.y - 1
+				next.v.y = -5
+			}
+
+			if(player.acceleration.y <= 0) {
+				jumping = false
+			}
+
+			stillOnGround(yArrPlayerPos, xArrPlayerPos)
+		}
+
+		function stillOnGround(ypos, xpos) {
+			if(!isFloor(ypos, xpos - 10)) {
+				console.log("checkNext")
+				g = 0.1
+				next.acceleration.y = g
+			}
+		}
+
+		function isFloor(posy, posx) {
+			return map1[posy][posx] == 'x'
+		}
+
+
 	//****************************************
 
 	player = next;
@@ -122,7 +163,6 @@ document.addEventListener('keydown', function(event) {
 switch(event.keyCode){
 	case 38:
 		if(!jumping){
-			player.y -= 1;
 			player.acceleration.y = -.3;
 			jumping = true;
 		}
@@ -132,6 +172,7 @@ switch(event.keyCode){
 		player.v.x = -1;
 		break;
 	case 39:
+		console.log("right")
 		player.v.x = 1;
 		break;
 }

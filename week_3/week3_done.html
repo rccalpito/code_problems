@@ -3,7 +3,7 @@
 		<TITLE>Week 3</TITLE>
 	</HEAD>
 	<BODY>
-		<script src="map1.js"></script>
+		<script src="map2.js"></script>
 
 		<canvas id="canvas" width="1200" height="1000" ></canvas>
 		<div id="fps"></div>
@@ -102,8 +102,24 @@ function gameLoop() {
 	}
 
 	//************ COLLISION CODE ***********
-		// This is your spot.
-		// feel free to call a function from here if you like but don't modify other code.
+	const x = Math.floor(next.x/tileSize);
+	const y = Math.floor(next.y/tileSize);
+
+	const upperLeft = map1[y][x];
+	const upperRight = map1[y][x+1];
+	const lowerLeft = map1[y+1][x];
+	const lowerRight = map1[y+1][x+1];
+
+	if(upperLeft === 'x' || upperRight === 'x') {
+		next.v.y = 0;
+		next.y = (y-1) * tileSize;
+		jumping = false;
+	}
+	if(lowerLeft === 'x' || lowerRight === 'x'){
+		next.v.y = 0;
+		next.y = (y * tileSize)
+		jumping = false;
+	}
 	//****************************************
 
 	player = next;

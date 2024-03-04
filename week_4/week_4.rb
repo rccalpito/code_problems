@@ -8,7 +8,7 @@ $tree_dataset = [
   { path: "1.6.16.18", position: 0 }, { path: "1.4.9.19", position: 0 }
 ]
 
-# The above data represents a binary tree structure, nodes are uniquely identified through a path of IDs,
+# The above data represents a tree structure, nodes are uniquely identified through a path of IDs,
 # starting from the root down to the specific node. This path is a string format consisting of IDs separated
 # by dots (.), where the leftmost ID represents the root, and each subsequent ID indicates a child node as
 # one descends through the tree.
